@@ -137,8 +137,9 @@ def load_oxts_packets_and_poses(oxts_files):
 
                 if origin is None:
                     origin = t
-
-                T_w_imu = transform_from_rot_trans(R, t - origin)
+                # the origin is not substracted for localization tasks
+                # T_w_imu = transform_from_rot_trans(R, t - origin)
+                T_w_imu = transform_from_rot_trans(R, t)
 
                 oxts.append(OxtsData(packet, T_w_imu))
 
